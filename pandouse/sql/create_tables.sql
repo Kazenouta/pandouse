@@ -17,8 +17,8 @@ CREATE TABLE ark.b_stk_bar_1min
   `ret`    Float32
 )
 ENGINE = MergeTree()
-PARTITION BY toYYYYMM(t_date)
-ORDER BY (symbol, s_time)
+PARTITION BY toYYYYMM(s_time)
+ORDER BY (s_time, symbol)
 SAMPLE BY symbol
 SETTINGS index_granularity = 8192;
 
@@ -41,8 +41,8 @@ CREATE TABLE ark.b_stk_bar_5min
   `ret`    Float32
 )
 ENGINE = MergeTree()
-PARTITION BY toYYYYMM(t_date)
-ORDER BY (symbol, s_time)
+PARTITION BY toYYYYMM(s_time)
+ORDER BY (s_time, symbol)
 SAMPLE BY symbol
 SETTINGS index_granularity = 8192;
 
